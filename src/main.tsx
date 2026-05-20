@@ -1,13 +1,18 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-import App from './App.tsx'
-import Layout from './components/Layout.tsx'
+import App from './App'
+import Layout from './components/Layout'
 
-createRoot(document.getElementById('root')!).render(
+const rootElement = document.getElementById('root')
+if (!rootElement) throw new Error('Root element #root not found in DOM')
+createRoot(rootElement).render(
   <StrictMode>
-    <Layout>
-      <App />
-    </Layout>
-  </StrictMode>,
+    <BrowserRouter>
+      <Layout>
+        <App />
+      </Layout>
+    </BrowserRouter>
+  </StrictMode>
 )
